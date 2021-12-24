@@ -1,0 +1,52 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class Main {
+	 static boolean isProperly(String sequence)
+	{
+		Deque<Character> stack
+			= new ArrayDeque<Character>();
+
+		for (int i = 0; i < sequence.length(); i++){
+			char x = sequence.charAt(i);
+
+
+            if (x == '(' ) {
+				stack.push(x);
+				continue;
+			}
+			if (stack.isEmpty())
+				return false;
+			char check;
+			switch (x) {
+			case ')':
+				check = stack.pop();
+				if ( check == ')')
+					return false;
+				break;
+
+			case '(':
+				check = stack.pop();
+				if (check == '(' )
+					return false;
+				break;
+
+			
+			}
+		}
+
+		return (stack.isEmpty());
+	}
+
+
+
+public static void main(String[] args)
+{
+    String sequence = "(()))";
+    
+    if (isProperly(sequence))
+        System.out.println("It is right ");
+    else
+        System.out.println(" It's not right ");
+}
+}
