@@ -1,0 +1,26 @@
+class Main {
+	 
+    static int notContains(int arr[], int size)
+    {
+        int j = 0, i;
+        for (i = 0; i < size; i++) {
+            if (arr[i] <= 0) {
+                int temp;
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                j++;
+            }
+        }
+        return j;
+       }
+
+	public static void main(String[] args) {
+		 int arr[] = {-12,6,3,9,7,9};
+	        int arr_size = arr.length;
+	        int missing = notContains(arr, arr_size);
+	        System.out.println("The smallest positive missing number is " + missing);
+	    }
+
+	
+}
